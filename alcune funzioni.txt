@@ -1,0 +1,31 @@
+const int cassaSx = 22;
+const int cassaDx = 24;
+const int alimLed = 26;
+const int ventola = 28;
+const int rosso = 32;
+const int verde = 34;
+const int blu = 36;
+const int audioBack = 31;
+const int audioFront = 33;
+const int luceCaminetto= 35;
+
+modSoft
+modFull
+tuttoOff
+tuttoLuciOff
+tuttoAudioOff
+
+
+else if (header.indexOf("GET //on") >= 0) {
+      Serial.println("GPIO  on");
+      output4State = "on";
+      digitalWrite(output4, HIGH);
+    } else if (header.indexOf("GET //off") >= 0) {
+      Serial.println("GPIO off");
+      output4State = "off";
+      digitalWrite(output4, LOW);
+    }
+
+http://192.168.2.89/alimLed/on
+http://192.168.2.89/audioBack /on
+http://192.168.2.89/alimLed/on

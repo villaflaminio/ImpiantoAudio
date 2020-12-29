@@ -1,0 +1,45 @@
+itembtn1 = types.InlineKeyboardButton(text=smoke, callback_data="['addSigaretta', '" + "addSigaretta" + "']")
+itembtn2 = types.InlineKeyboardButton(text=chart, callback_data="['chart', '" + "chart" + "']")
+
+@bot.message_handler(regexp=smoke)
+def send_welcome(message):
+    bot.send_message(chat_id=message.chat.id,
+                     text="vuoi confermare?",
+                     reply_markup=makeKeyboard(),
+                     parse_mode='HTML')
+
+
+
+@bot.message_handler(regexp="ccc")
+def send_welcome(message):
+    markupSocial = types.ReplyKeyboardMarkup(row_width=1)
+    instagram = types.KeyboardButton('instagram')
+    facebook = types.KeyboardButton('facebook')
+    posizione = types.KeyboardButton('Posizione')
+    back = types.KeyboardButton('indietro')
+    markupSocial.row(instagram, facebook, posizione)
+    markupSocial.row(back)
+    bot.send_message(message.chat.id, "Sequici sulle nostre pagine ", reply_markup=markupSocial)
+
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def handle_query(call):
+
+    if (call.data.startswith("['conferma'")):
+        print(f"call.data : {call.data} , type : {type(call.data)}")
+        print(f"ast.literal_eval(call.data) : {ast.literal_eval(call.data)} , type : {type(ast.literal_eval(call.data))}")
+        valueFromCallBack = ast.literal_eval(call.data)[1]
+        keyFromCallBack = ast.literal_eval(call.data)[1]
+
+        if (keyFromCallBack == "ok"):
+            sqlQuery = "INSERT into record (Data,count,isBeginning) values ('2020-12-18',1,0)"
+            myCursor.execute(sqlQuery)
+            myDb.commit()
+            bot.answer_callback_query(callback_query_id=call.id,
+                                      show_alert=True,
+                                      text="Fatto !")
+        if (keyFromCallBack == "no"):
+            bot.answer_callback_query(callback_query_id=call.id,
+                                      show_alert=True,
+                                      text="Annullato !")
