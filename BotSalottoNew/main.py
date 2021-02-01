@@ -6,7 +6,7 @@ import requests
 
 import json
 #tocken del bot telegram
-bot = telebot.TeleBot("1471980950:AAHWqlP_UgVQIvNHuRJWa7uIJDG6pk1oLCo")
+bot = telebot.TeleBot("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 #codice icone
 icoVento = u"\U0001F32C"
