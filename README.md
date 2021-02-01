@@ -1,4 +1,4 @@
-# impiantoAudio
+# ImpiantoAudio
 
 Arduino gestisce rele' ed interfaccie direttamente connesse tramite apposito webServer.
 La modifica di stato viene svolta tramite chiamate API da parte di un server flask che gira su raspberry.
